@@ -6,7 +6,7 @@ before_install:
   - docker build - t kandruch/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm test -- --coverage
+  - docker run -e CI=true kandruch/react-test npm test -- --coverage
 
 after_success:
   - docker build -t kandruch/multi-client ./client
@@ -20,4 +20,3 @@ after_success:
   - docker push kandruch/multi-nginx
   - docker push kandruch/multi-server
   - docker push kandruch/multi-worker
-  
